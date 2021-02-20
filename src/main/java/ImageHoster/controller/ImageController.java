@@ -54,7 +54,7 @@ public class ImageController {
     public String showImage(@PathVariable("title") String title, @PathVariable("id") String id,Model model) {
         //Image image = imageService.getImageByTitle(title);
         Integer i= Integer.parseInt(id);
-        Image image= imageService.getImage(i);
+        Image image= imageService.getImage(i); //Instead of getting image by title, we are first getting id and using image service to get the image
         List<Comment> comments= image.getComments();
         model.addAttribute("image", image);
         model.addAttribute("tags", image.getTags());
