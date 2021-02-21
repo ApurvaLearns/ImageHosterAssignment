@@ -54,6 +54,7 @@ public class Comment {
     @Column(name = "id")
     private Integer id;
 
+    //Column for test
     @Column(columnDefinition = "TEXT")
     private String text;
 
