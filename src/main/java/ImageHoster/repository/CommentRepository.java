@@ -13,6 +13,7 @@ public class CommentRepository {
     @PersistenceUnit(unitName = "imageHoster")
     private EntityManagerFactory emf;
 
+    //method to persist the comment in the datbase
     public Comment uploadComment(Comment comment1) {
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = em.getTransaction();

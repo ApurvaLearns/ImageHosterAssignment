@@ -62,6 +62,10 @@ public class ImageController {
         return "images/image";
     }
 
+    //Created the logic for this mapping , where we are creating object for Comment Class and
+    //Assigning for which image and by which user comment was uploaded
+    //After comment has been uploaded the suer is redirected to image
+
     @RequestMapping(value="/image/{id}/{title}/comments",method = RequestMethod.POST)
     public String showComments(@PathVariable("title") String title, @PathVariable("id") String id,@RequestParam("comment") String comment,HttpSession session)
     {
@@ -132,7 +136,7 @@ public class ImageController {
         List<Comment> comments= image.getComments();
         model.addAttribute("comments",comments);
 
-        if(user.getId()!=user1.getId())
+        if(user.getId()!=user1.getId()) //Comparing the logged in user and owner of the image
         {
             model.addAttribute("editError", error);
             return "images/image";
@@ -194,7 +198,7 @@ public class ImageController {
         String tags = convertTagsToString(image.getTags());
         model.addAttribute("image", image);
         model.addAttribute("tags", tags);
-        if(user.getId()!=user1.getId())
+        if(user.getId()!=user1.getId()) // Comparing the logged in user and the user deleting the image
         {
             model.addAttribute("deleteError", error);
             return "images/image";

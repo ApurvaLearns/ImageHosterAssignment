@@ -4,6 +4,9 @@ package ImageHoster.model;
 import javax.persistence.*;
 import java.util.Date;
 
+//@Entity annotation specifies that the corresponding class is a JPA entity
+//@Table annotation provides more options to customize the mapping.
+//Here the name of the table to be created in the database is explicitly mentioned as 'comments'
 @Entity
 @Table(name="comments")
 public class Comment {
@@ -62,11 +65,13 @@ public class Comment {
     @Column(name="createdDate")
     private Date createdDate;
 
+    //Since one user can have many comments, it has many to one fetching
     @ManyToOne(fetch = FetchType.EAGER)
     //Below annotation indicates that the name of the column in 'comment' table referring the primary key in 'users' table will be 'user_id'
     @JoinColumn(name = "user_id")
     private User user;
 
+    //Sinnce one image can have many comments, it has many to one mapping
     @ManyToOne(fetch = FetchType.EAGER)
     //Below annotation indicates that the name of the column in 'comment' table referring the primary key in 'image' table will be 'user_id'
     @JoinColumn(name = "image_id")
