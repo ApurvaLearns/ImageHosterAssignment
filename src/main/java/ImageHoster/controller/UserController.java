@@ -45,18 +45,19 @@ public class UserController {
     public String registerUser(User user,Model model) {
         String s1= user.getPassword();
         String error = "Password must contain atleast 1 alphabet, 1 number & 1 special character";
-        if(s1.matches((".*[a-zA-Z]+.*")))
+        if(s1.matches((".*[a-zA-Z]+.*")))  //Checking if the string contains alphabets
         {
-            if(s1.matches(".*\\d.*"))
+            if(s1.matches(".*\\d.*")) // Checking if the string contains digit
             {
                 String my_str=s1;
-                Pattern my_pattern = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+                Pattern my_pattern = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE); //Checking if the string implements special character
                 Matcher my_match = my_pattern.matcher(my_str);
                 boolean check = my_match.find();
                 if (check)
                 {
-                    userService.registerUser(user);
-                    return "redirect:/users/login";
+                    userService.registerUser(user); //If all conditions satisfied register user
+                    //return "redirect:/users/login";
+                    return "users/login";
                 }
 
             }
@@ -69,7 +70,7 @@ public class UserController {
         model.addAttribute("User", user1);
 
         model.addAttribute("passwordTypeError",error);
-        return "users/registration";
+        return "users/registration"; //Else display appropriate error message and return to registration page
 
 
     }

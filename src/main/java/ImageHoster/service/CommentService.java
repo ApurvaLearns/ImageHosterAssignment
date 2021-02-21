@@ -3,9 +3,10 @@ package ImageHoster.service;
 import ImageHoster.model.Comment;
 import ImageHoster.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-//Comment Service Created
 @Service
 public class CommentService {
     

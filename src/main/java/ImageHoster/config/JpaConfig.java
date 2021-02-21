@@ -1,5 +1,7 @@
 package ImageHoster.config;
 
+import ImageHoster.service.CommentService;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -9,6 +11,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 @Configuration
+@EnableAutoConfiguration
 public class JpaConfig {
 
     @Bean
@@ -28,5 +31,7 @@ public class JpaConfig {
         ds.setPassword("postgres");
         return ds;
     }
+
+
 }
 
